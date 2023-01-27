@@ -7,14 +7,10 @@ import Hierarchy.Programmers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Main {
+
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     private static AllOptions currentState = AllOptions.ALL;
@@ -173,7 +169,7 @@ public class Main {
                         LOGGER.info("YOU ENTER WRONG NUMBER. TRY IT AGAIN");
                         currentState = AllOptions.PRINT;
                     }
-                    if (a==3) {
+                    if (a == 3) {
                         currentState = AllOptions.PRINT;
                     }
                     switch (selectedOption) {
