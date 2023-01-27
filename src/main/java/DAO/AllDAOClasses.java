@@ -1,0 +1,8 @@
+package DAO;
+
+public enum AllDAOClasses {
+    PROGRAMMERS,
+    PARTICIPATION_IN_DEVELOPMENT,
+    FINANCING,
+    CONTRACT
+}
