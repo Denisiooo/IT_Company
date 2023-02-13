@@ -1,15 +1,17 @@
 package DAO;
 
-import Hierarchy.Financing;
+import hierarchy.Financing;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static DAO.ConnectionDB.getConnection;
-
 public class FinancingDAO implements IFinancingDAO{
+    private static final Logger LOGGER = LogManager.getLogger(FinancingDAO.class);
+
     public static final String ALL_INVESTOR = "SELECT * FROM financing";
     public static final String INVESTOR_BY_ID = "SELECT * FROM financing WHERE ID = ?";
     public static final String UPDATE = "UPDATE financing SET Investor = ? WHERE ID = ?";
@@ -31,9 +33,9 @@ public class FinancingDAO implements IFinancingDAO{
                 int amount = resultSet.getInt(5);
                 financings.add(new Financing(id, softwareId, investorId, investor, amount));
             }
-            System.out.println(financings);
+            LOGGER.info(financings);
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return financings;
     }
@@ -52,10 +54,10 @@ public class FinancingDAO implements IFinancingDAO{
                 financing.setInvestor(resultSet.getString(4));
                 financing.setAmount(resultSet.getInt(5));
             }
-            System.out.println(financing.getId() + " " + financing.getSoftwareId() + " " + financing.getInvestorId()
+            LOGGER.info(financing.getId() + " " + financing.getSoftwareId() + " " + financing.getInvestorId()
             + " " + financing.getInvestor() + " " + financing.getAmount());
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return financing;
     }
@@ -69,7 +71,7 @@ public class FinancingDAO implements IFinancingDAO{
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -89,7 +91,7 @@ public class FinancingDAO implements IFinancingDAO{
              ps.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -101,7 +103,7 @@ public class FinancingDAO implements IFinancingDAO{
             String del = "DELETE FROM financing WHERE ID = " + id;
             stmt.executeUpdate(del);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }

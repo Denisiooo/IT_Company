@@ -1,16 +1,17 @@
 package DAO;
 
-import Hierarchy.Contract;
+import hierarchy.Contract;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static DAO.ConnectionDB.getConnection;
-
 public class ContractDAO implements IContractDAO {
+    private static final Logger LOGGER = LogManager.getLogger(ContractDAO.class);
+
     public static final String ALL_CONTRACT = "SELECT * FROM contract";
     public static final String USERS_BY_ID = "SELECT * FROM contract WHERE ID_Number_of_contract = ?";
     public static final String UPDATE = "UPDATE contract SET Customer = ? WHERE ID_Number_of_contract = ?";
@@ -34,9 +35,9 @@ public class ContractDAO implements IContractDAO {
                 int cost = resultSet.getInt(7);
                 contracts.add(new Contract(id, custId, customer, description, agreementDate, deadline, cost));
             }
-            System.out.println(contracts);
+            LOGGER.info(contracts);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return contracts;
     }
@@ -57,11 +58,11 @@ public class ContractDAO implements IContractDAO {
                 contract.setDeadline(resultSet.getString(5));
                 contract.setDevelopmentCost(resultSet.getInt(6));
             }
-            System.out.println(contract.getIDNumberOfContract() + " " + contract.getCustomerId() + " " + contract.getCustomer()
+            LOGGER.info(contract.getIDNumberOfContract() + " " + contract.getCustomerId() + " " + contract.getCustomer()
                     + " " + contract.getDescription() + " " + contract.getAgreementDate() + " " + contract.getDeadline() + " "
                     + contract.getDevelopmentCost());
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return contract;
     }
@@ -75,7 +76,7 @@ public class ContractDAO implements IContractDAO {
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -95,7 +96,7 @@ public class ContractDAO implements IContractDAO {
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -107,7 +108,7 @@ public class ContractDAO implements IContractDAO {
             String del = "DELETE FROM contract WHERE ID_Number_of_contract = " + id;
             stmt.executeUpdate(del);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }

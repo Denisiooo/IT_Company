@@ -1,9 +1,14 @@
-package Hierarchy;
+package hierarchy;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName(value = "Products")
 public class ProductsType {
     private int TypeId;
     private String ProductType;
 
+    @JsonGetter("idType")
     public int getTypeId() {
         return TypeId;
     }
@@ -12,6 +17,7 @@ public class ProductsType {
         TypeId = typeId;
     }
 
+    @JsonGetter("product")
     public String getProductType() {
         return ProductType;
     }

@@ -1,16 +1,18 @@
 package DAO;
 
-import Hierarchy.*;
+import hierarchy.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static DAO.ConnectionDB.getConnection;
-
 
 public class ProgrammersDAO implements IProgrammersDAO {
+    private static final Logger LOGGER = LogManager.getLogger(ProgrammersDAO.class);
+
     public static final String ALL_PROGRAMMERS = "SELECT * FROM programmers";
     public static final String USERS_BY_ID = "SELECT * FROM programmers WHERE ID_Employee = ?";
     public static final String UPDATE = "UPDATE programmers SET Phone_number = ? WHERE ID_Employee = ?";
@@ -34,9 +36,9 @@ public class ProgrammersDAO implements IProgrammersDAO {
 
                 programmers.add(new Programmers(id, surname, name, patronymic, phoneNumber, dateOfBirth));
             }
-            System.out.println(programmers);
+            LOGGER.info(programmers);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return programmers;
     }
@@ -56,10 +58,10 @@ public class ProgrammersDAO implements IProgrammersDAO {
                 programmers.setPhoneNumber(resultSet.getInt("Phone_number"));
                 programmers.setDateOfBirth(resultSet.getString("Date_of_birth"));
             }
-            System.out.println(programmers.getIdEmployee() + " " + programmers.getSurname() + " " + programmers.getName() +
+            LOGGER.info(programmers.getIdEmployee() + " " + programmers.getSurname() + " " + programmers.getName() +
                     " " + programmers.getPatronymic() + " " + programmers.getPhoneNumber() + " " + programmers.getDateOfBirth());
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return programmers;
     }
@@ -72,7 +74,7 @@ public class ProgrammersDAO implements IProgrammersDAO {
             ps.setLong(2, entity.getIdEmployee());
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -90,7 +92,7 @@ public class ProgrammersDAO implements IProgrammersDAO {
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -102,7 +104,7 @@ public class ProgrammersDAO implements IProgrammersDAO {
             String del = "DELETE FROM programmers WHERE ID_Employee = " + id;
             ps.executeUpdate(del);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }

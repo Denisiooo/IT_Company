@@ -19,11 +19,11 @@ public class ConnectionPool {
             prop.load(input);
 
             String url = prop.getProperty("database.url");
-            String user = prop.getProperty("database.user");
+            String username = prop.getProperty("database.username");
             String password = prop.getProperty("database.password");
 
             ds.setUrl(url);
-            ds.setUsername(user);
+            ds.setUsername(username);
             ds.setPassword(password);
 
         }catch (IOException e){

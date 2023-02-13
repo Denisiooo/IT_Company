@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DAO.IContractDAO">
+    <insert id ="create" useGeneratedKeys = "true" keyProperty = "id">
+        INSERT INTO contract (Customer_ID, Customer, Description, Agreement_date, Deadline, Development_cost)
+        VALUES (#{customerId}, #{customer}, #{description}, #{agreementDate}, #{deadline}, #{developmentCost})
+    </insert>
+</mapper>

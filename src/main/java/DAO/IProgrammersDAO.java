@@ -1,6 +1,6 @@
 package DAO;
 
-import Hierarchy.Programmers;
+import hierarchy.Programmers;
 
 public interface IProgrammersDAO extends IBaseDAO<Programmers>{
 }

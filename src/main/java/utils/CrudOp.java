@@ -1,17 +1,18 @@
-package DAO;
+package utils;
 
-import Hierarchy.Contract;
-import Hierarchy.Financing;
-import Hierarchy.ParticipationInDevelopment;
-import Hierarchy.Programmers;
+import DAO.*;
+import hierarchy.Contract;
+import hierarchy.Financing;
+import hierarchy.ParticipationInDevelopment;
+import hierarchy.Programmers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
-public class Main {
+public class CrudOp {
 
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    private static final Logger LOGGER = LogManager.getLogger(CrudOp.class);
 
     private static AllOptions currentState = AllOptions.ALL;
     private static AllDAOClasses selectedOption = null;
@@ -46,62 +47,62 @@ public class Main {
                     IBaseDAO iBaseDAO = getClass(scanner);
                     switch (selectedOption) {
                         case PROGRAMMERS -> {
-                            Programmers programmers = new Programmers();
-                            LOGGER.info("Enter surname");
-                            programmers.setSurname(scanner.next());
-                            LOGGER.info("Enter name");
-                            programmers.setName(scanner.next());
-                            LOGGER.info("Enter patronymic");
-                            programmers.setPatronymic(scanner.next());
-                            LOGGER.info("Enter phone number");
-                            programmers.setPhoneNumber(scanner.nextInt());
-                            LOGGER.info("Enter date of birth");
-                            programmers.setDateOfBirth(scanner.next());
+                            Programmers programmers = Programmers.Factory(scanner, LOGGER);
+//                            LOGGER.info("Enter surname");
+//                            programmers.setSurname(scanner.next());
+//                            LOGGER.info("Enter name");
+//                            programmers.setName(scanner.next());
+//                            LOGGER.info("Enter patronymic");
+//                            programmers.setPatronymic(scanner.next());
+//                            LOGGER.info("Enter phone number");
+//                            programmers.setPhoneNumber(scanner.nextInt());
+//                            LOGGER.info("Enter date of birth");
+//                            programmers.setDateOfBirth(scanner.next());
                             iBaseDAO.create(programmers);
                             currentState = AllOptions.ALL;
                         }
                         case PARTICIPATION_IN_DEVELOPMENT -> {
-                            ParticipationInDevelopment participationInDevelopment = new ParticipationInDevelopment();
-                            LOGGER.info("Enter calendar plan Id");
-                            participationInDevelopment.setCalendarPlanId(scanner.nextInt());
-                            LOGGER.info("Enter employee Id");
-                            participationInDevelopment.setEmployeeId(scanner.nextInt());
-                            LOGGER.info("Enter employee");
-                            participationInDevelopment.setEmployee(scanner.next());
-                            LOGGER.info("Enter job description");
-                            participationInDevelopment.setJobDescription(scanner.next());
-                            LOGGER.info("Enter programming language");
-                            participationInDevelopment.setProgrammingLanguage(scanner.next());
+                            ParticipationInDevelopment participationInDevelopment = ParticipationInDevelopment.Factory(scanner, LOGGER);
+//                            LOGGER.info("Enter calendar plan Id");
+//                            participationInDevelopment.setCalendarPlanId(scanner.nextInt());
+//                            LOGGER.info("Enter employee Id");
+//                            participationInDevelopment.setEmployeeId(scanner.nextInt());
+//                            LOGGER.info("Enter employee");
+//                            participationInDevelopment.setEmployee(scanner.next());
+//                            LOGGER.info("Enter job description");
+//                            participationInDevelopment.setJobDescription(scanner.next());
+//                            LOGGER.info("Enter programming language");
+//                            participationInDevelopment.setProgrammingLanguage(scanner.next());
                             iBaseDAO.create(participationInDevelopment);
                             currentState = AllOptions.ALL;
                         }
                         case FINANCING -> {
-                            Financing financing = new Financing();
-                            LOGGER.info("Enter software Id");
-                            financing.setSoftwareId(scanner.nextLong());
-                            LOGGER.info("Enter investor Id");
-                            financing.setInvestorId(scanner.nextInt());
-                            LOGGER.info("Enter investor");
-                            financing.setInvestor(scanner.next());
-                            LOGGER.info("Enter amount");
-                            financing.setAmount(scanner.nextInt());
+                            Financing financing = Financing.Factory(scanner, LOGGER);
+//                            LOGGER.info("Enter software Id");
+//                            financing.setSoftwareId(scanner.nextLong());
+//                            LOGGER.info("Enter investor Id");
+//                            financing.setInvestorId(scanner.nextInt());
+//                            LOGGER.info("Enter investor");
+//                            financing.setInvestor(scanner.next());
+//                            LOGGER.info("Enter amount");
+//                            financing.setAmount(scanner.nextInt());
                             iBaseDAO.create(financing);
                             currentState = AllOptions.ALL;
                         }
                         case CONTRACT -> {
-                            Contract contract = new Contract();
-                            LOGGER.info("Enter customer Id");
-                            contract.setCustomerId(scanner.nextLong());
-                            LOGGER.info("Enter customer");
-                            contract.setCustomer(scanner.next());
-                            LOGGER.info("Enter description");
-                            contract.setDescription(scanner.next());
-                            LOGGER.info("Enter agreement date");
-                            contract.setAgreementDate(scanner.next());
-                            LOGGER.info("Enter deadline");
-                            contract.setDeadline(scanner.next());
-                            LOGGER.info("Enter development cost");
-                            contract.setDevelopmentCost(scanner.nextInt());
+                            Contract contract = Contract.Factory(scanner, LOGGER);
+//                            LOGGER.info("Enter customer Id");
+//                            contract.setCustomerId(scanner.nextLong());
+//                            LOGGER.info("Enter customer");
+//                            contract.setCustomer(scanner.next());
+//                            LOGGER.info("Enter description");
+//                            contract.setDescription(scanner.next());
+//                            LOGGER.info("Enter agreement date");
+//                            contract.setAgreementDate(scanner.next());
+//                            LOGGER.info("Enter deadline");
+//                            contract.setDeadline(scanner.next());
+//                            LOGGER.info("Enter development cost");
+//                            contract.setDevelopmentCost(scanner.nextInt());
                             iBaseDAO.create(contract);
                             currentState = AllOptions.ALL;
                         }

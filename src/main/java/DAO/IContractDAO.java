@@ -1,6 +1,6 @@
 package DAO;
 
-import Hierarchy.Contract;
+import hierarchy.Contract;
 
 public interface IContractDAO extends IBaseDAO<Contract>{
 }

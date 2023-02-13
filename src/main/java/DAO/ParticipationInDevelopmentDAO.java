@@ -1,16 +1,17 @@
 package DAO;
 
-import Hierarchy.Financing;
-import Hierarchy.ParticipationInDevelopment;
+import hierarchy.ParticipationInDevelopment;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static DAO.ConnectionDB.getConnection;
-
 public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmentDAO {
+    private static final Logger LOGGER = LogManager.getLogger(ParticipationInDevelopmentDAO.class);
+
     public static final String ALL_PARTICIPATIONS = "SELECT * FROM participation_in_development";
     public static final String EMPLOYEE_BY_ID = "SELECT * FROM participation_in_development WHERE ID = ?";
     public static final String UPDATE = "UPDATE participation_in_development SET Programming_language = ? " +
@@ -37,9 +38,9 @@ public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmen
                 participationInDevelopments.add(new ParticipationInDevelopment(id, calendarPlanId, employeeId, employee,
                         jobDescription, programmingLanguage));
             }
-            System.out.println(participationInDevelopments);
+            LOGGER.info(participationInDevelopments);
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return participationInDevelopments;
     }
@@ -59,11 +60,11 @@ public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmen
                 participationInDevelopment.setJobDescription(resultSet.getString(5));
                 participationInDevelopment.setProgrammingLanguage(resultSet.getString(6));
             }
-            System.out.println(participationInDevelopment.getId() + " " + participationInDevelopment.getCalendarPlanId() + " "
+            LOGGER.info(participationInDevelopment.getId() + " " + participationInDevelopment.getCalendarPlanId() + " "
             + participationInDevelopment.getEmployeeId() + " " + participationInDevelopment.getEmployee() + " "
             + participationInDevelopment.getJobDescription() + " " + participationInDevelopment.getProgrammingLanguage());
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return participationInDevelopment;
     }
@@ -77,7 +78,7 @@ public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmen
               ps.executeUpdate();
               ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -97,7 +98,7 @@ public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmen
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }
@@ -109,7 +110,7 @@ public class ParticipationInDevelopmentDAO implements IParticipationInDevelopmen
             String del = "DELETE FROM participation_in_development WHERE ID = " + id;
             stmt.executeUpdate(del);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
         return true;
     }

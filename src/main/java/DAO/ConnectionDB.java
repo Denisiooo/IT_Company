@@ -15,10 +15,10 @@ public class ConnectionDB {
             prop.load(input);
 
             String url = prop.getProperty("database.url");
-            String user = prop.getProperty("database.user");
+            String username = prop.getProperty("database.username");
             String pass = prop.getProperty("database.password");
 
-            return DriverManager.getConnection(url, user, pass);
+            return DriverManager.getConnection(url, username, pass);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

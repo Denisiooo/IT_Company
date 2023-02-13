@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DAO.IProgrammersDAO">
+    <sql id="body">
+        p.ID_Employee as employee_id,
+        p.Surname as surname,
+        p.Name as name,
+        p.Patronymic as patronymic,
+        p.Phone_number as phone_number,
+        p.Date_of_birth as birthday
+    </sql>
+    <select id="getEntityById" resultMap="programmersResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM programmers p
+        WHERE ID_Employee = #{id}
+    </select>
+    <resultMap id="programmersResultMap" type="hierarchy.Programmers" autoMapping="false">
+        <id column="employee_id" property="idEmployee"/>
+        <result column="surname" property="surname"/>
+        <result column="name" property="name"/>
+        <result column="patronymic" property="patronymic"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="birthday" property="dateOfBirth"/>
+    </resultMap>
+</mapper>

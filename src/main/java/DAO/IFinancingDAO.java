@@ -1,6 +1,6 @@
 package DAO;
 
-import Hierarchy.Financing;
+import hierarchy.Financing;
 
 public interface IFinancingDAO extends IBaseDAO<Financing>{
 }

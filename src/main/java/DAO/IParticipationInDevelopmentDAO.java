@@ -1,6 +1,6 @@
 package DAO;
 
-import Hierarchy.ParticipationInDevelopment;
+import hierarchy.ParticipationInDevelopment;
 
 public interface IParticipationInDevelopmentDAO extends IBaseDAO<ParticipationInDevelopment>{
 }

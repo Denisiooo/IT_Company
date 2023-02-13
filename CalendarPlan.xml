@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CalendarPlans>
+    <CalendarPlan id = "1">
+        <softwareId>1</softwareId>
+        <nameOfWorks>Develop</nameOfWorks>
+        <plannedStartDate>2023-01-30</plannedStartDate>
+    </CalendarPlan>
+    <CalendarPlan id = "2">
+        <softwareId>2</softwareId>
+        <nameOfWorks>Test</nameOfWorks>
+        <plannedStartDate>2023-01-30</plannedStartDate>
+    </CalendarPlan>
+</CalendarPlans>

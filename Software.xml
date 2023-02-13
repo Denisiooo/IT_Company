@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Software id="1" contract_number="12">
+    <nameOfTheSoftware>taxx</nameOfTheSoftware>
+    <version>5</version>
+    <typeId>2</typeId>
+    <type>t</type>
+    <dateOfIssue>2023-01-31</dateOfIssue>
+</Software>

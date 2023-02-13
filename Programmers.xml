@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ProgrammersInfo>
+    <Programmers>
+        <Name id="1">Denis # 1</Name>
+        <ProgrammingLanguage>Java</ProgrammingLanguage>
+        <Level>Middle</Level>
+        <StudyTime>5</StudyTime>
+    </Programmers>
+    <Programmers>
+        <Name id="2">Denis # 2</Name>
+        <ProgrammingLanguage>Java</ProgrammingLanguage>
+        <Level>Middle</Level>
+        <StudyTime>5</StudyTime>
+    </Programmers>
+    <Programmers>
+        <Name id="3">Denis # 3</Name>
+        <ProgrammingLanguage>Java</ProgrammingLanguage>
+        <Level>Middle</Level>
+        <StudyTime>1</StudyTime>
+    </Programmers>
+</ProgrammersInfo>

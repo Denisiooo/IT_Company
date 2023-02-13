@@ -1,4 +1,4 @@
-package Hierarchy;
+package hierarchy;
 
 import java.util.Date;
 
